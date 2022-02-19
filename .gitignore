@@ -1,0 +1,5 @@
+docs/
+.idea/
+tmp/
+build/
+.env

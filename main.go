@@ -3,6 +3,7 @@ package main
 import (
 	_ "Onboarding/docs"
 	"Onboarding/handler"
+	"Onboarding/utils"
 	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/mix-go/dotenv"
@@ -43,6 +44,9 @@ func init() {
 
 	// 加载Handler
 	loadHandlers()
+
+	// 加载验证器
+	e.Validator = utils.NewValidationUtil()
 
 	// 获取绑定的地址 默认为127.0.0.1
 	address = dotenv.Getenv("HOST").String("127.0.0.1")

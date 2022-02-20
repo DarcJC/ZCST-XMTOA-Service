@@ -19,8 +19,8 @@ var port int
 // @description 入职微服务
 // @contact.name DarcJC
 // @contact.email i@darc.pro
-// @host localhost
-// @BasePath /v1
+// @host xmt.zcst.edu.cn
+// @BasePath /api/oa-onboarding/
 func main() {
 	// 运行服务端
 	e.Logger.Fatal(e.Start(fmt.Sprintf("%s:%d", address, port)))

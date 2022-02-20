@@ -23,6 +23,8 @@ type UserAuth struct {
 // @Summary 检查我的珠科用户名密码是否有效
 // @Description 检查我的珠科账号
 // @Tags 用户
+// @Param username body string true "我的珠科用户名"
+// @Param password body string true "我的珠科密码"
 // @Accept json
 // @Produce json
 // @Success 204 "响应体为空"

@@ -1,0 +1,42 @@
+services:
+  redis:
+    image: redis:6.0-alpine
+    restart: unless-stopped
+    networks:
+      - onboarding
+  worker:
+    build:
+      context: .
+    restart: unless-stopped
+    networks:
+      - onboarding
+    depends_on:
+      - redis
+    env_file:
+      - ".env"
+    environment:
+      - REDIS_ADDR=redis:6379
+      - JWT_SECRET=
+      - DIRECTUS_URL=
+      - DIRECTUS_TOKEN=
+    entrypoint:
+      - ./build/runner
+  web:
+    build:
+      context: .
+    ports:
+      - "8010:8000"
+    restart: unless-stopped
+    networks:
+      - onboarding
+    depends_on:
+      - redis
+    environment:
+      - HOST=0.0.0.0
+    env_file:
+      - ".env"
+    entrypoint:
+      - ./build/web
+
+networks:
+  onboarding:
